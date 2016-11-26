@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wanghaisheng.dao.SucessKilledDao">
+    <insert id="insertSucessKilled">
+        INSERT ignore INTO
+          success_killed(seckill_id,user_phone,state)
+        VALUES
+          (#{seckillId},#{userPhone},#{state})
+    </insert>
+
+    <select id="queryByIdWithSecKill" resultType="SuccessKilled">
+        SELECT
+          sd.seckill_id,sd.user_phone,sd.state,sd.create_time,
+          sl.seckill_id "seckill.seckill_id",
+          sl.name "seckill.name",
+          sl.number "seckill.number",
+          sl.start_time "seckill.start_time",
+          sl.end_time "seckill.end_time",
+          sl.create_time "seckill.create_time"
+        FROM success_killed sd
+        INNER JOIN seckill sl
+        ON sd.seckill_id = sl.seckill_id
+        WHERE sd.seckill_id = #{seckillId}
+        AND sd.user_phone = #{userPhone};
+    </select>
+
+</mapper>
