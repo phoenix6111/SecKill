@@ -4,6 +4,7 @@ import com.wanghaisheng.entity.SuccessKilled;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,18 +19,19 @@ public class SucessKilledDaoTest {
     @Resource
     private SucessKilledDao mSucessKilledDao;
 
+    @Rollback
     @Test
     public void insertSucessKilled() throws Exception {
-        long id = 1004L;
+        long id = 1000L;
         long phone = 18680316976L;
         int state = 0;
-        int insertCount = mSucessKilledDao.insertSucessKilled(id,phone,state);
+        int insertCount = mSucessKilledDao.insertSucessKilled(id,phone);
         System.out.println("insertCount  "+insertCount);
     }
 
     @Test
     public void queryByIdWithSecKill() throws Exception {
-        long seckillId = 1004L;
+        long seckillId = 1000L;
         long phone = 18680316976L;
         SuccessKilled successKilled = mSucessKilledDao.queryByIdWithSecKill(seckillId,phone);
         System.out.println(successKilled);

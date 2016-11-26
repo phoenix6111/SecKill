@@ -7,24 +7,24 @@
       <!--具体的sql语句-->
       UPDATE seckill
       SET
-        number = number -1
+        inv_num = inv_num -1
       WHERE
         seckill_id = #{seckillId}
       AND start_time <![CDATA[ <= ]]> #{killTime}
       AND end_time >= #{killTime}
-      AND number > 0;
+      AND inv_num > 0;
     </update>
 
     <select id="queryById" resultType="Seckill">
         SELECT
-          seckill_id,name,number,start_time,end_time,create_time
+          seckill_id,name,inv_num,start_time,end_time,create_time
         FROM seckill
         WHERE seckill_id = #{seckillId};
     </select>
 
     <select id="queryAll" resultType="Seckill">
         SELECT
-          seckill_id,name,number,start_time,end_time,create_time
+          seckill_id,name,inv_num,start_time,end_time,create_time
         FROM seckill
         LIMIT #{offset},#{limit};
     </select>

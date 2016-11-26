@@ -16,7 +16,7 @@ public interface SucessKilledDao {
      * @return 插入数据影响的行数，如果返回值 <= 0，则秒杀不成功。因为successkilled表是seckill_id和user_phone
      * 为联合主键，则一个用户只能秒杀同一个一次
      */
-    int insertSucessKilled(@Param("seckillId")long seckillId,@Param("userPhone") long userPhone,@Param("state") int state);
+    int insertSucessKilled(@Param("seckillId")long seckillId,@Param("userPhone") long userPhone);
 
     /**
      * 根据seckillId和userPhone查询一个秒杀详情记录

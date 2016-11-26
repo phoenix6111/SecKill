@@ -4,6 +4,7 @@ import com.wanghaisheng.entity.Seckill;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,11 +26,11 @@ public class SeckillDaoTest {
     @Resource
     private SeckillDao mSeckillDao;
 
+    @Rollback
     @Test
     public void reduceNumber() throws Exception {
-//        mSeckillDao.reduceNumber();
         Date nowTime = new Date();
-        int updateCount = mSeckillDao.reduceNumber(1004L,nowTime);
+        int updateCount = mSeckillDao.reduceNumber(1000L,nowTime);
         System.out.println("updateCount  "+updateCount);
     }
 

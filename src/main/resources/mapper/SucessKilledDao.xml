@@ -7,7 +7,7 @@
         INSERT ignore INTO
           success_killed(seckill_id,user_phone,state)
         VALUES
-          (#{seckillId},#{userPhone},#{state})
+          (#{seckillId},#{userPhone},0)
     </insert>
 
     <select id="queryByIdWithSecKill" resultType="SuccessKilled">
@@ -15,7 +15,7 @@
           sd.seckill_id,sd.user_phone,sd.state,sd.create_time,
           sl.seckill_id "seckill.seckill_id",
           sl.name "seckill.name",
-          sl.number "seckill.number",
+          sl.inv_num "seckill.inv_num",
           sl.start_time "seckill.start_time",
           sl.end_time "seckill.end_time",
           sl.create_time "seckill.create_time"
