@@ -49,7 +49,7 @@ public class SeckillServiceTest {
     @Rollback
     @Test
     public void exportSeckillUrl() throws Exception {
-        long id = 1002L;
+        long id = 1000L;
         Exposer exposer = mSeckillService.exportSeckillUrl(id);
         if(exposer.isExposed()) {
             mLogger.info("exposer = {}",exposer);

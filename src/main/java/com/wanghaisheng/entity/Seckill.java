@@ -11,6 +11,7 @@ public class Seckill {
     private long seckillId;
     //商品名称
     private String name;
+    private int invNum;
     //开始时间
     private Date startTime;
     //结束时间
@@ -39,7 +40,8 @@ public class Seckill {
     }
 
     public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+        long minusTime = startTime.getTime() - 8*60*60*1000;
+        this.startTime = new Date(minusTime);
     }
 
     public Date getEndTime() {
@@ -47,7 +49,8 @@ public class Seckill {
     }
 
     public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+        long minusTime = endTime.getTime() - 8*60*60*1000;
+        this.endTime = new Date(minusTime);
     }
 
     public Date getCreateTime() {
@@ -55,7 +58,16 @@ public class Seckill {
     }
 
     public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+        long minusTime = createTime.getTime() - 8*60*60*1000;
+        this.createTime = new Date(minusTime);
+    }
+
+    public int getInvNum() {
+        return invNum;
+    }
+
+    public void setInvNum(int invNum) {
+        this.invNum = invNum;
     }
 
     @Override

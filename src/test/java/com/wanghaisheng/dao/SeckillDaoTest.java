@@ -26,7 +26,6 @@ public class SeckillDaoTest {
     @Resource
     private SeckillDao mSeckillDao;
 
-    @Rollback
     @Test
     public void reduceNumber() throws Exception {
         Date nowTime = new Date();
@@ -38,7 +37,9 @@ public class SeckillDaoTest {
     public void queryById() throws Exception {
         long id = 1000L;
         Seckill seckill = mSeckillDao.queryById(id);
-        System.out.println(seckill.getName());
+//        System.out.println(seckill.getName());
+        Date d = new Date();
+        System.out.println(d);
         System.out.println(seckill);
     }
 

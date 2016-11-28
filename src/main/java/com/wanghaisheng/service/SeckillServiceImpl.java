@@ -103,12 +103,12 @@ public class SeckillServiceImpl implements SeckillService {
     public SeckillExcution executeSeckill(long seckillId, long userPhone, String md5)
             throws SeckillException, RepeatSeckillException, SeckillCloseException {
 
-        try {
-            //如果md5值为空或md5值与原md5值不相等，则可能用户窜改了秒杀信息，秒杀不成功
-            if((md5 == null) || (!md5.equals(getMD5(seckillId)))) {
-                throw new SeckillException("seckill data rewrited!");
-            }
+        //如果md5值为空或md5值与原md5值不相等，则可能用户窜改了秒杀信息，秒杀不成功
+        if((md5 == null) || (!md5.equals(getMD5(seckillId)))) {
+            return new SeckillExcution(seckillId,SeckillStateEnum.DATA_REWRITE);
+        }
 
+        try {
             //执行秒杀，减库存，写入秒杀结果信息
             Date nowDate = new Date();
 

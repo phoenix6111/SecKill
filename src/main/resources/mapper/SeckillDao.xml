@@ -5,14 +5,15 @@
 <mapper namespace="com.wanghaisheng.dao.SeckillDao">
     <update id="reduceNumber">
       <!--具体的sql语句-->
-      UPDATE seckill
+      UPDATE
+        seckill
       SET
         inv_num = inv_num -1
       WHERE
         seckill_id = #{seckillId}
       AND start_time <![CDATA[ <= ]]> #{killTime}
       AND end_time >= #{killTime}
-      AND inv_num > 0;
+      AND inv_num > 0
     </update>
 
     <select id="queryById" resultType="Seckill">
